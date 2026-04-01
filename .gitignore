@@ -1,3 +1,5 @@
 ./dist 
 ./node_modules
 ./nest-cli.json
+node_modules
+dist
