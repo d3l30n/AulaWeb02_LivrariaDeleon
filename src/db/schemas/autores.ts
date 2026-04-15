@@ -1,7 +1,7 @@
-import {msSqlTable, int, varchar} from 'drizzle-orm/mssql-core';
-import {timestamp as MsSqlTimestamp} from 'drizzle-orm/mysql-core';
+import {mssqlTable, int, varchar, datetime} from 'drizzle-orm/mssql-core';
 
-export const autoresTabela = msSqlTable('autores', {
+
+export const autoresTabela = mssqlTable('autores', {
     id: int('id').primaryKey().notNull(),
     nome: varchar('nome', { length: 100 }).notNull(),
     email: varchar('email', { length: 255 }).unique().notNull(),
