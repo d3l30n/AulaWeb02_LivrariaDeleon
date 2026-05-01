@@ -16,10 +16,12 @@ export class AutoresController {
   constructor(private readonly autoresService: AutoresService) {}
 
  @Get('/listar-autores')
- listarAutores(){
+  async listarAutores(){
   console.log('listarController');
-  return this.autoresService.listarAutores();
+  return await this.autoresService.listarAutores();
  }
+
+  
 
   @Get('/listar-autor/:id')
   listarAutor(@Param('id', ParseIntPipe) id: number) {
@@ -36,11 +38,11 @@ export class AutoresController {
     @Param('id', ParseIntPipe) idAutor: number,
     @Body() body: AtualizarAutoDto,
   ) {
-    return this.autoresService.atualizarAutor(idAutor, body);
+    // return this.autoresService.atualizarAutor(idAutor, body);
   }
 
   @Delete('/deletar-autor/:id')
   remove(@Param('id', ParseIntPipe) id: number) {
-    return this.autoresService.deletar(id);
+    return this.autoresService.deletarAutor(id);
   }
 }

@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import {DATABASE_URL, DRIZZLE } from './database.constants';
 import { drizzle } from 'drizzle-orm/node-mssql';
-import {connect} from 'mysql';
+import { connect } from 'mssql';
 import type {config as MsSqlConfig} from 'mssql';
 import * as schema from '../schemas/index';
 
@@ -14,7 +14,7 @@ import * as schema from '../schemas/index';
       inject: [],
       useFactory: async () => {
         const dbConfig: MsSqlConfig = {
-          server:'@SRV-BD-1',
+          server:'SRV-BD-1',
           port: 1433,
           user: 'alunos_des225',
           password: '123',
@@ -29,7 +29,7 @@ import * as schema from '../schemas/index';
         return drizzle({client: pool, schema: schema});  
       },
     },
-    exports: [DRIZZLE],
   ],
+  exports: [DRIZZLE],
 })
 export class DatabaseModule {}
