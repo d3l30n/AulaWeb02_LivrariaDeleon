@@ -29,16 +29,16 @@ export class AutoresController {
   }
 
   @Post('/criar-autor')
-  criarAutor(@Body() body: CriarAutorDto) {
-    return this.autoresService.criarAutor(body);
+  criarAutor(@Body() bodyRequest: CriarAutorDto) {
+    return this.autoresService.criarAutor(bodyRequest);
   }
 
   @Put('/atualizar-autor/:id')
   atualizarAutor(
     @Param('id', ParseIntPipe) idAutor: number,
-    @Body() body: AtualizarAutoDto,
+    @Body() bodyRequest: AtualizarAutoDto,
   ) {
-    // return this.autoresService.atualizarAutor(idAutor, body);
+    return this.autoresService.atualizarAutor(idAutor, bodyRequest);
   }
 
   @Delete('/deletar-autor/:id')
