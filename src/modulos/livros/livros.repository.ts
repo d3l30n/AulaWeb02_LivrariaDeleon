@@ -15,4 +15,17 @@ export class LivrosRepository {
     throw new InternalServerErrorException('Erro ao listar livros'); 
    }
   }
+  async criarLivro(bodyRequest: CriarLivroDto){
+    try { 
+      await this.db.insert(livrosTabela).values({
+        idAutor: bodyRequest.id_autor,
+        titulo: bodyRequest.titulo,
+        descricao: bodyRequest.descricao,
+      });
+     
+      return `Livro ${bodyRequest.titulo} criado com sucesso`; 
+    } catch (error) {
+      throw new InternalServerErrorException('Erro ao criar livro');
+    }
 }	
+}
